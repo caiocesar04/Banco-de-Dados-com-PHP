@@ -1,0 +1,81 @@
+CREATE TABLE `tbcategorias` (
+  `idCategoria` int NOT NULL,
+  `nomeCategoria` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- Extraindo dados da tabela `tbcategorias`
+--
+
+INSERT INTO `tbcategorias` (`idCategoria`, `nomeCategoria`) VALUES
+(1, 'Ação'),
+(2, 'Aventura'),
+(3, 'Ficção Científica');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `tbfilmes`
+--
+
+CREATE TABLE `tbfilmes` (
+  `idFilme` int NOT NULL,
+  `titulofilme` varchar(100) NOT NULL,
+  `duracaoFilme` varchar(10) NOT NULL,
+  `valorLocacao` decimal(10,2) NOT NULL,
+  `idCategoria` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- Extraindo dados da tabela `tbfilmes`
+--
+
+INSERT INTO `tbfilmes` (`idFilme`, `titulofilme`, `duracaoFilme`, `valorLocacao`, `idCategoria`) VALUES
+(1, 'Exterminador do Futuro', '1:30', '3.50', 1),
+(2, 'Indiana Jones', '2:00', '3.00', 2),
+(3, 'Rambo', '2:30', '3.00', 1),
+(4, 'Star Wars', '1:450', '3.00', 3);
+
+--
+-- Índices para tabelas despejadas
+--
+
+--
+-- Índices para tabela `tbcategorias`
+--
+ALTER TABLE `tbcategorias`
+  ADD PRIMARY KEY (`idCategoria`);
+
+--
+-- Índices para tabela `tbfilmes`
+--
+ALTER TABLE `tbfilmes`
+  ADD PRIMARY KEY (`idFilme`),
+  ADD KEY `idCategoria` (`idCategoria`);
+
+--
+-- AUTO_INCREMENT de tabelas despejadas
+--
+
+--
+-- AUTO_INCREMENT de tabela `tbcategorias`
+--
+ALTER TABLE `tbcategorias`
+  MODIFY `idCategoria` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de tabela `tbfilmes`
+--
+ALTER TABLE `tbfilmes`
+  MODIFY `idFilme` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- Restrições para despejos de tabelas
+--
+
+--
+-- Limitadores para a tabela `tbfilmes`
+--
+ALTER TABLE `tbfilmes`
+  ADD CONSTRAINT `tbfilmes_ibfk_1` FOREIGN KEY (`idCategoria`) REFERENCES `tbcategorias` (`idCategoria`);
+COMMIT;
