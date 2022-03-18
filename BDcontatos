@@ -1,0 +1,9 @@
+CREATE TABLE `contato` (
+  `id` int NOT NULL PRIMARY KEY,
+  `nome` varchar(30) NOT NULL,
+  `idade` varchar(30) NOT NULL,
+  `cpf` varchar(30) NOT NULL,
+  `email` varchar(30) NOT NULL,
+  `nascimento` date NOT NULL,
+  `telefone` varchar(15) NOT NULL
+)
